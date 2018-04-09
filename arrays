@@ -1,0 +1,45 @@
+// arrays.cpp : 定义控制台应用程序的入口点。
+// 统计输入字符串中字母个数。
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+void main()
+{
+	const int N = 80;
+	char buffer[N];
+	int k = 0;
+	const int NUM = 26;
+	int counts[NUM] = { 0 };
+	char letters[NUM];
+	int i = 0;
+
+	do
+	{
+		cout << "enter a string:\n";
+		cin.getline(buffer, N, '\n');
+		k = 0;
+		while (buffer[k] != '\0')
+		{
+			if (tolower(buffer[k]) >= 'a'&&tolower(buffer[k] <= 'z'))
+			{
+				i = tolower(buffer[k]) - 'a';
+				counts[i]++;
+			}
+			k++;
+		}
+
+	} while (buffer[0] != '\0');
+	cout << "the statistics result:" << endl;
+	for (i = 0; i < NUM; i++)
+	{
+		letters[i] = (char)('a' + i);
+		if (counts[i] > 0)
+		{
+			cout << letters[i] << ":   " << counts[i] << endl;
+		}
+
+	}
+
+}
