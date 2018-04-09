@@ -1,0 +1,48 @@
+// bubble_template.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+template<class T>
+void TSort(T a[], int num)
+{
+	int i, j;
+	T t;
+	for (i = 0; i < num; i++)
+	{
+		for (j = i + 1; j < num; j++)
+		{
+			if (a[i] > a[j])
+			{
+				t = a[i];
+				a[i] = a[j];
+				a[j] = t;
+			}
+		}
+	}
+}
+	template <class T>
+	void TPrint(T a[],int num)
+	{
+		int i;
+		for (i = 0; i < num; i++)
+		{
+			cout << a[i] << endl;
+		}
+		cout << "\n";
+	}
+
+int main()
+{
+	int i, a[6] = {5,6,9,4,2,3};
+	TSort(a, 6);
+	TPrint(a, 6);
+
+	double b[6] = { 5,6,9,4,2,3 };
+	TSort(b, 6);
+	TPrint(b, 6);
+    return 0;
+}
+
