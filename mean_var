@@ -1,0 +1,64 @@
+// eratosthenes.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	const int ROWS = 20;
+	const int COLS = 10;
+	int matrix[ROWS][COLS] = { 0 };
+	int col, row;
+	srand((unsigned int)time(NULL));
+//  creat datasets
+	for (row = 0; row < ROWS; row++)
+	{
+		for (col = 0; col < COLS; col++)
+		{
+			matrix[row][col] = rand() % 100;
+			cout << setw(4) << matrix[row][col] << endl;
+
+		}
+		cout << endl;
+	}
+	// statistics mean
+	float mean(0), var(0);
+	for (row = 0; row < ROWS; row++)
+	{
+		for (col = 0; col < COLS;col++)
+		{
+			mean += matrix[row][col];
+		}
+	}
+	int size = ROWS*COLS;
+	if (size > 0)
+	{
+		mean /= size;
+	}
+	else
+		mean = 0;
+
+	//statistics var
+	for (row = 0; row < ROWS; row++)
+	{
+		for (col = 0; col < COLS; col++)
+		{
+			var += (pow((matrix[row][col] - mean),2));
+			/*var += ((matrix[row][col] - mean)*(matrix[row][col] - mean));*/
+		}
+	}
+	if (size > 0)
+	{
+		var /= size;
+	}
+	else
+		var = 0;
+	cout << "mean = " << mean << "   var = " << var << endl;
+    return 0;
+}
+
