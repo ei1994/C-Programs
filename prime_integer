@@ -1,0 +1,54 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+//计算100以内素数之和
+/*
+int main()
+{
+	int m, i;
+	cout << "输入一个整数：\n";
+	cin >> m;
+	double k = sqrt(double(m));
+	for (i = 2; i <= k + 1; i++)
+	{
+		if (m%i == 0)
+			break;
+	}
+	if (i >= k + 1)
+		cout << m << " 是素数。" << endl;
+	else
+		cout << m << " 不是素数。" << endl;
+
+    return 0;
+}
+*/
+//打印100以内素数，并计算之和
+void main()
+{
+	int sum = 0, num = 2;
+	cout << "素数包括：";
+	while (num++ <= 99)
+	{
+		bool isPrime = true;
+		for (int div = 2; div <= num / 2; div++)
+		{
+			if (num%div == 0)
+			{
+				isPrime = false;
+				break;
+			}
+		}
+		if (isPrime)
+		{
+			cout << num << " " << endl;
+			continue;
+		}
+		sum += num;
+
+	}
+	cout << "素数和：" << sum << endl;
+
+}
