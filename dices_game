@@ -1,0 +1,38 @@
+// struct_students.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <stdlib.h>
+
+using namespace std;
+
+int main()
+{
+	const int N=11;
+	const int Dice = 6;
+	const int EXP = 36000;
+	int result_times[N] = { 0 };
+
+	int add_result;
+	int i, j;
+	srand((unsigned int)time(NULL));
+	for (i = 0; i < EXP; i++)
+	{
+		add_result = rand() % Dice + 1;
+		add_result += (rand() % Dice + 1);
+		result_times[add_result - 2]++;
+
+	}
+	cout << "the accumulated results:" << endl;
+	cout << setw(5) << "Points" << setw(10) << "times" << endl;
+	for (i = 0; i < N; i++)
+	{
+		cout << setw(10) << i + 2 << setw(10) << result_times[i] << endl;
+	}
+
+    return 0;
+}
+  
