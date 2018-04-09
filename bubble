@@ -1,0 +1,79 @@
+// bubble.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+/*
+int main()
+{
+	const int arraySize = 5;
+	int a[arraySize] = { 6,2,10,4,8 };
+	int i, hold;
+	cout << "Data items in original order\n";
+	for (i = 0; i < arraySize; i++)
+	{
+		cout << setw(4) << a[i];
+	}
+	for (int pass = 1; pass < arraySize; pass++)
+	{
+		for (i = 0;i<= arraySize - pass - 1; i++)
+		{
+			if (a[i] > a[i + 1])
+			{
+				hold = a[i];
+				a[i] = a[i + 1];
+				a[i + 1] = hold;
+
+			}
+		}
+	}
+	cout << "\nData items in ascending order\n";
+	for (i = 0; i < arraySize; i++)
+	{
+		cout << setw(4) << a[i];
+	}
+	cout << endl;
+    return 0;
+}
+*/
+
+
+int main()
+{
+	const int arraySize = 5;
+	int a[arraySize] = { 6,2,10,4,8 };
+	int i, hold;
+	int pos, bound;
+	cout << "Data items in original order\n";
+	for (i = 0; i < arraySize; i++)
+	{
+		cout << setw(4) << a[i];
+	}
+	pos = arraySize - 1;
+	while (pos)
+	{
+		bound = pos;
+		pos = 0;
+		for (i = 0; i < bound; i++)
+		{
+			if (a[i] > a[i + 1])
+			{
+				hold = a[i];
+				a[i] = a[i + 1];
+				a[i + 1] = hold;
+				pos = i;
+			}
+		}
+	}
+	cout << "\nData items in ascending order\n";
+	for (i = 0; i < arraySize; i++)
+	{
+		cout << setw(4) << a[i];
+	}
+	cout << endl;
+
+}
+
