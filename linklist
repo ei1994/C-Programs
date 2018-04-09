@@ -1,0 +1,109 @@
+// linklist_1.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+struct node
+{
+	int x;
+	node* next;
+
+};
+
+class link
+{
+private :
+	node* head;
+	node* tail;
+public:
+	link();
+	link(link&l);
+	~link();
+	void add(int v);
+	void del(int v);
+	void show()
+	{
+		node* temp = head;
+		while (temp != NULL)
+		{
+			cout << temp->x << endl;
+			temp = temp->next;
+		}
+	}
+};
+
+link::link()
+{
+	head = new node;
+	tail = head;
+	head->x = 0;
+	head->next = NULL;
+}
+
+link::~link()
+{
+	node* temp = head;
+	node* temp1;
+	while (temp->next != NULL)
+	{
+		temp1 = temp;
+		temp = temp->next;
+		delete temp1;
+	}
+}
+
+link::link(link& l)
+{
+	head = new node;
+	head->x = l.head->x;
+	node* templ = l.head;
+	node* temp = head;
+	while (templ->next != NULL)
+	{
+		temp->next = new node;
+		temp->next->x = templ->next->x;
+		templ = templ->next;
+		temp = temp->next;
+	}
+	temp->next = NULL;
+	tail = temp;
+}
+
+void link::add(int v)
+{
+	node* temp = new node;
+	temp->x = v;
+	temp->next = 0;
+	tail->next = temp;
+	tail = temp;
+}
+
+void link::del(int v)
+{
+	node* temp = head;
+	while ((temp->next != NULL) && (temp->next->x != v))
+	{
+		temp = temp->next;
+	}
+	if (temp->next != NULL)
+		temp->next = temp->next->next;
+}
+
+
+int main()
+{
+	link linktable;
+	linktable.add(5);
+	linktable.add(15);
+	linktable.show();
+	linktable.del(15);
+	linktable.show();
+
+	link table2(linktable);
+	table2.show();
+
+    return 0;
+}
+
